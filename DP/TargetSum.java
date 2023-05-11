@@ -7,7 +7,10 @@ public class TargetSum {
 		for(int i=0;i<n;i++) {
 			sum += arr[i];
 		}
-		s1 = (S+sum)/2;
+		s1 = (S+sum)/2;  
+		
+		
+		
 		//System.out.println(s1);
 		int t[][] = new int[n+1][s1+1];
 		for(int i=0;i<n+1;i++) {

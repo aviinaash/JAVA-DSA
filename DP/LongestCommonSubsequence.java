@@ -9,9 +9,9 @@ public class LongestCommonSubsequence {
 		}
 		if(a.charAt(n-1) == b.charAt(m-1)) {
 			return 1+lcsrec(a,b,n-1,m-1);
-		}
+		}   
 		else {
-			return Math.max(lcsrec(a,b,n,m-1), lcsrec(a,b,n-1,m-1));
+			return Math.max(lcsrec(a,b,n,m-1), lcsrec(a,b,n-1,m));
 		}
 	}
 
@@ -59,13 +59,72 @@ public class LongestCommonSubsequence {
 		}
 		return t[n][m];
 	}
+	
+	// Print Longest Subsequence md-1
+	static String printlcs(String a,String b,int n,int m) {
+		int t[][] = new int [n+1][m+1];
+		for(int i=0;i<n+1;i++) {
+			for(int j=0;j<m+1;j++) {
+				if(i==0 || j==0) {
+					t[i][j] = 0;
+				}
+			}
+		}
+		for(int i=1;i<n+1;i++) {
+			for(int j=1;j<m+1;j++) {
+				if(a.charAt(i-1) == b.charAt(j-1)) {
+					t[i][j]=1+t[i-1][j-1];
+				}
+				else {
+					t[i][j]=Math.max(t[i-1][j],t[i][j-1]);
+				}
+			}
+		}
+		String s ="";
+		int i=n;int j=m;
+		while(i>0 && j>0) {
+			if(a.charAt(i-1) == b.charAt(j-1)) {
+				s = s+(a.charAt(i-1));
+				i--;j--;
+			}
+			else {
+				if(t[i][j-1]>t[i-1][j]) {
+					j--;
+				}
+				else {
+					i--;
+				}
+			}
+		}
+		return s;
+	}
+	
+	// Print Longest Subsequence md-2
+	static String printlcs2(String a, String b,int n,int m) {
+	    int[][] t = new int[n + 1][m + 1];
+	    StringBuilder sb = new StringBuilder();
+	    for (int i = 1; i < n+1; i++) {
+	        for (int j = 1; j < m+1; j++) {
+	            if (a.charAt(i - 1) == b.charAt(j - 1)) {
+	                t[i][j] = 1 + t[i - 1][j - 1];
+	                sb.append(a.charAt(i-1));
+	            } 
+	            else {
+	                t[i][j] = Math.max(t[i - 1][j], t[i][j - 1]);
+	            }
+	        }
+	    }
+	    return sb.toString();
+	}
 	public static void main(String[] args) {
 		String a = "abcdgh";
 		String b = "abedfhr";
 		int n = a.length();int m = b.length();
-		System.out.println(lcsrec(a,b,n,m));  // abdh-->4
-		System.out.println(lcsmem(a,b,n,m));
+		//System.out.println(lcsrec(a,b,n,m));  // abdh-->4
+		//System.out.println(lcsmem(a,b,n,m));
 		System.out.println(lcsitr(a,b,n,m));
+		System.out.println(printlcs(a,b,n,m));
+		System.out.println(printlcs2(a,b,n,m));
 	}
 
 }

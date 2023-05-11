@@ -26,6 +26,12 @@ public class MinSubsetSumDiff {
 				}
 			}
 		}
+		for(int i=0;i<n+1;i++) {
+			for(int j=0;j<sum+1;j++) {
+				System.out.print(t[i][j]+" ");
+			}
+			System.out.println();
+		}
 		ArrayList<Integer> li = new ArrayList<>();
 		for(int i=0;i<n+1;i++) {
 			for(int j=0;j<sum+1;j++) {
@@ -38,12 +44,11 @@ public class MinSubsetSumDiff {
 		for(int k=0;k<li.size();k++) {
 			min = Math.min(min, Math.abs(sum-(2*li.get(k))));
 		}
-		
 		return min;
 	}
 
 	public static void main(String[] args) {
-		int arr[] = {1, 6, 11, 5,10,15};    // (15+10) - (1+6+11+5) = 2
+		int arr[] = {-36,36};    // (15+10) - (1+6+11+5) = 2
 		System.out.println(minsubsumdiff(arr));
 	}
 

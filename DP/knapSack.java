@@ -34,12 +34,12 @@ public class knapSack {
 				return t[n][W];
 			}
 			if(wt[n-1]<=W) {
-				return t[n][W]=Math.max((val[n-1]+knapsackrec(wt,val,W-wt[n-1],n-1)), knapsackrec(wt,val,W,n-1));
+				 t[n][W]=Math.max((val[n-1]+knapsackrec(wt,val,W-wt[n-1],n-1)), knapsackrec(wt,val,W,n-1));
 			}
 			else if(wt[n-1]>W) {
-				return t[n][W]=knapsackrec(wt,val,W,n-1);
+				 t[n][W]=knapsackrec(wt,val,W,n-1);
 			}
-			return 0;
+			return t[n][W];
 		}
 		
 		// <----------------iterative--------------------->
@@ -63,12 +63,12 @@ public class knapSack {
 					}
 				}
 			}
-//			for(int i=0;i<n+1;i++) {
-//				for(int j=0;j<W+1;j++) {
-//					System.out.print(t[i][j]+" ");
-//				}
-//				System.out.println();
-//			}
+			for(int i=0;i<n+1;i++) {
+				for(int j=0;j<W+1;j++) {
+					System.out.print(t[i][j]+" ");
+				}
+				System.out.println();
+			}
 			return t[n][W];
 		}
 
@@ -78,10 +78,10 @@ public class knapSack {
 		int val[]= {1,4,7,10};
 		int n=wt.length;
 		int capacity=8;
-//		System.out.println(knapsackrec(wt,val,capacity,n));
-//		System.out.println("-------------------");
-//		System.out.println(knapsackmem(wt,val,capacity,n));
-//		System.out.println("-------------------");
+		System.out.println(knapsackrec(wt,val,capacity,n));
+		System.out.println("-------------------");
+		System.out.println(knapsackmem(wt,val,capacity,n));
+		System.out.println("-------------------");
 		System.out.println(knapsackTopDown(wt,val,capacity,n));
 	}
 
