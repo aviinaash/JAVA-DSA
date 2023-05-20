@@ -70,9 +70,9 @@ public class LongestCommonSubstr {
 
 
 
-//Given two strings ‘X’ and ‘Y’, find the length of the longest common substring.
+//Given two strings â€˜Xâ€™ and â€˜Yâ€™, find the length of the longest common substring.
 //Examples:
 //
-//Input : X = “GeeksforGeeks”, y = “GeeksQuiz”
+//Input : X = â€œGeeksforGeeksâ€, y = â€œGeeksQuizâ€
 //Output : 5
-//The longest common substring is “Geeks” and is of length 5.
+//The longest common substring is â€œGeeksâ€ and is of length 5.
